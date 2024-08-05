@@ -17,8 +17,14 @@ intervalCount(function() {
 ***********************************************************************/
 
 function intervalCount(cb, delay, amount) {
-  let callback = setInterval(cb, delay);
-  
+  let intervalObj = setInterval(function () {
+    cb();
+    amount--;
+    if(amount === 0) {
+      clearInterval(intervalObj);
+    }
+  }, delay);
+
 }
 
 
